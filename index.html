@@ -442,6 +442,124 @@
     }
 
 </style>
+
+<style id="sheen-final-mobile-refinement">
+/* Brand line: keep the full descriptor elegant and compact on phones */
+@media (max-width: 767px) {
+  header > div:first-child > div:first-child p,
+  .ss-footer-brand > p {
+    max-width: 220px;
+    font-size: clamp(8px, 2.35vw, 10px) !important;
+    line-height: 1.35 !important;
+    letter-spacing: .055em !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+  header > div:first-child > div:first-child p { margin-top: 3px; }
+  #storeView section:first-child h1 { max-width: 100%; }
+  #storeView section:first-child .text-xs,
+  #storeView section:first-child .tracking-widest { overflow-wrap: anywhere; }
+
+  /* Keep product details, checkout and order receipt dialogs centered */
+  #productQuickViewModal, #checkoutModal, #receiptModal {
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 14px !important;
+  }
+  #productQuickViewModal > div,
+  #checkoutModal > div,
+  #receiptModal > div {
+    width: min(100%, 520px) !important;
+    max-width: 520px !important;
+    max-height: min(88dvh, 760px) !important;
+    margin: auto !important;
+    border-radius: 22px !important;
+    padding-bottom: max(18px, env(safe-area-inset-bottom)) !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+  }
+  #productModalContent { grid-template-columns: minmax(0, 1fr) !important; }
+  #productModalContent > div:first-child { height: clamp(175px, 42dvh, 260px) !important; }
+  #productModalContent > div { min-width: 0; }
+  #checkoutModal form, #checkoutModal input, #checkoutModal select,
+  #checkoutModal textarea { min-width: 0; max-width: 100%; }
+  #receiptModal .overflow-x-auto { max-width: 100%; }
+
+  /* Custom request action: wrap text, retain comfortable tap target */
+  #custom-builder button, #custom-builder a,
+  button[onclick*="WhatsApp"], a[href*="wa.me"] {
+    max-width: 100%;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+  #custom-builder button { min-height: 48px; line-height: 1.35; }
+  #custom-builder .flex { min-width: 0; flex-wrap: wrap; }
+  #custom-builder .grid { min-width: 0; }
+  #custom-builder input, #custom-builder textarea, #custom-builder select { width: 100%; }
+
+  /* Refined footer layout */
+  .ss-lux-footer { padding-top: 38px; }
+  .ss-footer-main { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 27px 18px; }
+  .ss-footer-brand, .ss-footer-note { grid-column: 1 / -1; }
+  .ss-footer-brand > p { max-width: none; font-size: 11px !important; }
+  .ss-footer-note { padding: 21px; }
+  .ss-footer-note h3 { font-size: 22px; }
+  .ss-footer-column a { font-size: 12px; gap: 9px; }
+  .ss-footer-column svg { width: 17px; height: 17px; flex: 0 0 17px; }
+  .ss-footer-bottom { flex-direction: column; gap: 11px; text-align: center; padding-top: 18px; }
+}
+@media (max-width: 380px) {
+  #productQuickViewModal, #checkoutModal, #receiptModal { padding: 9px !important; }
+  #productQuickViewModal > div, #checkoutModal > div, #receiptModal > div {
+    max-height: 90dvh !important; padding: 17px 14px !important;
+  }
+  #storeView section:first-child h1 { font-size: clamp(27px, 8.5vw, 33px) !important; }
+  .ss-footer-main { gap: 23px 12px; }
+  .ss-footer-column h4 { font-size: 10px; }
+  .ss-footer-column a { font-size: 11px; }
+}
+/* Premium footer */
+.ss-lux-footer {
+  position:relative; isolation:isolate; overflow:hidden; margin-top:auto;
+  padding:58px 0 22px; color:#4b343b;
+  background:linear-gradient(135deg,#fffaf9 0%,#fcebef 48%,#f8e4e8 100%);
+  border-top:1px solid rgba(178,77,98,.18);
+}
+.ss-footer-glow {
+  position:absolute; z-index:-1; width:420px; height:420px; border-radius:50%;
+  right:-150px; top:-260px; background:rgba(232,165,152,.22); filter:blur(12px);
+}
+.ss-footer-main {
+  display:grid; grid-template-columns:1.35fr .8fr .9fr 1.25fr;
+  gap:34px; padding-bottom:34px; border-bottom:1px solid rgba(178,77,98,.18);
+}
+.ss-footer-logo { display:flex; align-items:center; gap:11px; color:#38272d; font-family:Georgia,serif; font-size:22px; font-weight:700; }
+.ss-footer-logo i { color:#b65368; font-weight:400; }
+.ss-footer-logo small { display:block; margin-top:2px; font:700 8px/1.2 Arial,sans-serif; letter-spacing:.32em; color:#a66c78; }
+.ss-footer-mark { display:grid; place-items:center; width:43px; height:43px; border-radius:15px; color:#9f4b5d; background:linear-gradient(145deg,#f8dce2,#fff); border:1px solid rgba(178,77,98,.18); }
+.ss-footer-mark svg { width:25px; height:25px; }
+.ss-footer-brand > p { margin-top:17px; color:#654b53; font-size:12px; font-weight:600; letter-spacing:.04em; }
+.ss-footer-country { display:inline-block; margin-top:7px; color:#a27c82; font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+.ss-footer-column h4 { margin:4px 0 16px; color:#50363e; font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+.ss-footer-column a { display:flex; align-items:center; gap:10px; margin:12px 0; color:#765e65; font-size:12px; font-weight:600; transition:color .2s, transform .2s; }
+.ss-footer-column a:hover { color:#a7445a; transform:translateX(3px); }
+.ss-footer-column svg { width:18px; height:18px; color:#b65368; }
+.ss-footer-note { padding:24px; border:1px solid rgba(178,77,98,.17); border-radius:22px; background:rgba(255,255,255,.58); box-shadow:0 12px 34px -26px rgba(110,54,68,.35); }
+.ss-footer-eyebrow { color:#b65368; font-size:9px; font-weight:800; letter-spacing:.18em; }
+.ss-footer-note h3 { margin:10px 0 8px; color:#402d33; font:600 25px/1.12 Georgia,serif; }
+.ss-footer-note p { color:#806b71; font-size:11px; line-height:1.7; }
+.ss-footer-cta { display:inline-flex; align-items:center; gap:10px; margin-top:16px; padding:10px 14px; border-radius:999px; background:#a94d62; color:#fff !important; font-size:11px; font-weight:700; transition:transform .2s, background .2s; }
+.ss-footer-cta:hover { transform:translateY(-2px); background:#8f3d52; }
+.ss-footer-bottom { display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:20px; color:#9a8289; font-size:10px; }
+.ss-footer-made span { color:#b65368; }
+.ss-admin-key { padding:5px; color:#a98e95; opacity:.55; }
+.ss-admin-key:hover { opacity:1; }
+.ss-admin-key svg { width:15px; height:15px; }
+@media (min-width:768px) and (max-width:1024px) {
+  .ss-footer-main { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+</style>
+
 </head>
 <body class="bg-brand-cream text-brand-slate font-sans min-h-screen flex flex-col selection:bg-brand-rose selection:text-white relative overflow-x-hidden">
 
@@ -579,7 +697,7 @@
                         <div class="relative mx-auto max-w-md lg:max-w-none">
                             <!-- Main Hero Feature Image -->
                             <div class="glass-card rounded-3xl p-3 shadow-2xl relative overflow-hidden transform">
-                                <img src="main_pic_web.webp" 
+                                <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80" 
                                     alt="Luxury Gift Hamper" 
                                     class="w-full h-80 sm:h-[26rem] object-cover rounded-t-[999px] rounded-b-2xl">
                                 
@@ -1046,56 +1164,73 @@
         </div>
     </section>
 
-<footer class="bg-gradient-to-br from-white via-brand-lightpink/60 to-brand-pink/40 border-t border-brand-rose/30 pt-14 pb-8 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pb-8 border-b border-brand-rose/20">
-                <div class="space-y-3 md:col-span-1">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-6 h-6 rounded-md bg-brand-pink flex items-center justify-center text-brand-rosedark">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V6a2 2 0 10-2 2h2zm0 13C10.832 19.677 9.246 18 7.5 18S4.168 19.677 3 21c1.168-1.323 2.754-3 4.5-3s3.332 1.677 4.5 3zm0 0c1.168-1.323 2.754-3 4.5-3s3.332 1.677 4.5 3s2.754-3 4.5-3s3.332 1.677 4.5 3"/></svg>
-                        </div>
-                        <span class="font-serif font-bold text-lg text-gray-900">Sheen & Shay Creates</span>
-                    </div>
-                    <p class="text-xs text-gray-500 leading-relaxed">
-                        Pakistan's premier luxury gift boutique for bespoke hampers, resin keepsakes, and personalized romantic gift boxes. Handcrafted with precision.
-                    </p>
+<footer class="ss-lux-footer">
+    <div class="ss-footer-glow"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="ss-footer-main">
+            <div class="ss-footer-brand">
+                <div class="ss-footer-logo">
+                    <span class="ss-footer-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 20.5V8.2M12 8.2c-2.8 0-4.7-1.5-4.7-3.5 2.8 0 4.7 1.4 4.7 3.5Zm0 0c2.8 0 4.7-1.5 4.7-3.5-2.8 0-4.7 1.4-4.7 3.5ZM5 20.5h14"/>
+                            <path d="M8 13.2c-2.1 0-3.5 1.1-3.5 2.8 2.1 0 3.5-1.1 3.5-2.8Zm8 0c2.1 0 3.5 1.1 3.5 2.8-2.1 0-3.5-1.1-3.5-2.8Z"/>
+                        </svg>
+                    </span>
+                    <span>Sheen <i>&</i> Shay <small>CREATES</small></span>
                 </div>
-                <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900 mb-3">Quick Navigation</h4>
-                    <ul class="space-y-2 text-xs text-gray-600">
-                        <li><a href="#catalog" class="hover:text-brand-rosedark inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>Luxury Catalog</a></li>
-                        <li><a href="#order-tracking" class="hover:text-brand-rosedark inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h11v10H3zM14 10h4l3 3v4h-7zM7 20a2 2 0 100-4 2 2 0 000 4zm11 0a2 2 0 100-4 2 2 0 000 4z"/></svg>Track Your Order</a></li>
-                        <li><a href="#custom-builder" class="hover:text-brand-rosedark">WhatsApp Bespoke Order</a></li>
-                        <li><button onclick="openAdminPasscodeModal()" class="hover:text-brand-rosedark">Admin Portal</button></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900 mb-3">Delivery Coverage</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Karachi, Lahore, Islamabad, Rawalpindi, Faisalabad, Multan, Sialkot, Peshawar, Quetta & All Pakistan Cities.</p>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900 mb-3">Contact Support</h4>
-                    <a href="https://wa.me/923000000000" target="_blank" rel="noopener" class="text-xs text-gray-600 font-semibold inline-flex items-center gap-2 hover:text-brand-rosedark"><svg class="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0012.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.1 1.6 5.9L.2 24l6.4-1.7a11.8 11.8 0 005.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.4z"/></svg>WhatsApp Support</a>
-                    <a href="https://www.instagram.com/sheen_n_shay/" target="_blank" rel="noopener" class="text-xs text-gray-500 mt-2 inline-flex items-center gap-2 hover:text-brand-rosedark"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>Instagram: @sheen_n_shay</a>
-                </div>
+                <p>Handcrafted Custom Keepsakes &amp; Hampers</p>
+                <span class="ss-footer-country">Thoughtfully made in Pakistan</span>
             </div>
-            
-            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 space-y-2 sm:space-y-0">
-                <p>&copy; 2026 Sheen & Shay Creates. All Rights Reserved.</p>
 
-                <!-- Secret Admin Footer Keyhole -->
-                <button onclick="openAdminPasscodeModal()" title="Store admin" aria-label="Store admin" class="opacity-40 hover:opacity-100 transition-opacity p-1">
-                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 0121 9z"/></svg>
-                </button>
+            <div class="ss-footer-column">
+                <h4>Explore</h4>
+                <a href="#catalog">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
+                    Luxury Catalog
+                </a>
+                <a href="#order-tracking">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v11H3zM14 10h4l3 3v5h-7z"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="17.5" cy="19" r="1.5"/></svg>
+                    Track Your Order
+                </a>
+                <a href="#custom-builder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
+                    Custom Gift Request
+                </a>
+            </div>
 
-                <p class="flex items-center space-x-1">
-                    <span>Crafted with</span>
-                    <svg class="w-3.5 h-3.5 text-rose-500 fill-current inline-block" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                    <span>in Pakistan</span>
-                </p>
+            <div class="ss-footer-column">
+                <h4>Find Us</h4>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Hyderabad%2C+Sindh%2C+Pakistan" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                    Hyderabad, Pakistan
+                </a>
+                <a href="https://wa.me/923000000000" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.2 11.8a8.2 8.2 0 0 1-12.1 7.1L3 20l1.2-4.8a8.2 8.2 0 1 1 16-3.4Z"/><path d="M8.5 8.2c.4 2.7 2.5 4.8 5.2 5.2l1.2-1.2 2 .9c-.2 1.1-1.1 1.8-2.2 1.8-3.8-.3-7.2-3.7-7.5-7.5 0-1.1.7-2 1.8-2.2l.9 2-1.4 1Z"/></svg>
+                    WhatsApp Support
+                </a>
+                <a href="https://www.instagram.com/sheen_n_shay/" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+                    Instagram
+                </a>
+            </div>
+
+            <div class="ss-footer-note">
+                <span class="ss-footer-eyebrow">MADE TO BE REMEMBERED</span>
+                <h3>Gifts with a little more meaning.</h3>
+                <p>Personalized details, thoughtful presentation, and keepsakes made just for your special moments.</p>
+                <a class="ss-footer-cta" href="#custom-builder">Create something special <span aria-hidden="true">→</span></a>
             </div>
         </div>
-    </footer>
+
+        <div class="ss-footer-bottom">
+            <p>© 2026 Sheen &amp; Shay Creates. All rights reserved.</p>
+            <button onclick="openAdminPasscodeModal()" class="ss-admin-key" aria-label="Store admin" title="Store admin">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15 7a2 2 0 0 0 2 2m4 0a6 6 0 0 1-7.7 5.7L11 17H9v2H7v2H4v-3.6l6.3-6.3A6 6 0 1 1 21 9Z"/></svg>
+            </button>
+            <p class="ss-footer-made">Crafted with care <span>♥</span> in Pakistan</p>
+        </div>
+    </div>
+</footer>
 
     <!-- SLIDE-OVER CART DRAWER -->
     <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden pointer-events-none" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
